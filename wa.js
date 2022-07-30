@@ -57,6 +57,7 @@ Hooks.once("ready", () => {
  */
 Hooks.on("renderJournalDirectory", (app, html, data) => {
   if ( !game.user.isGM ) return;
+  const module2 = game.modules.get("world-anvil");
 
   // Add the World Anvil Button
   const button = $(`<button type="button" id="world-anvil">
@@ -65,15 +66,15 @@ Hooks.on("renderJournalDirectory", (app, html, data) => {
   button.on("click", ev => {
     const anvil = game.modules.get("world-anvil").anvil;
     if ( anvil.worldId ) {
-      module.browser.render(true);
+      module2.browser.render(true);
     } else {
-      module.config.render(true);
+      module2.config.render(true);
     }
   });
   html.find(".directory-header .action-buttons").append(button);
 
   // Re-render the browser, if it's active
-  module.browser.render(false);
+  module2.browser.render(false);
 });
 
 
