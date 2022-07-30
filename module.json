@@ -1,6 +1,6 @@
 {
-  "name": "world-anvil-solais",
-  "title": "World Anvil Integration for Solais",
+  "name": "world-anvil",
+  "title": "World Anvil Integration",
   "description": "<p>A module to integrate <a href=\"https://worldanvil.com\" title=\"World Anvil\" target=\"_blank\">World Anvil</a> with Foundry Virtual Tabletop.</p>",
   "author": "Blaiz",
   "authors": [],
@@ -26,5 +26,5 @@
   "system": [],
   "dependencies": [],
   "manifest": "https://raw.githubusercontent.com/StacyJCarlos/world-anvil/master/module.json",
-  "download": "https://github.com/StacyJCarlos/world-anvil/archive/refs/tags/release-1.3.3.3.zip"
+  "download": "https://github.com/StacyJCarlos/world-anvil/archive/refs/tags/release-1.3.3.4.zip"
 }
