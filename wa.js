@@ -9,7 +9,7 @@ let module = undefined;
  * Initialization actions taken on Foundry Virtual Tabletop client init.
  */
 Hooks.once("init", () => {
-  module = game.modules.get("world-anvil");
+  module = module ?? game.modules.get("world-anvil");
 
   // Register settings menu
   WorldAnvilConfig.registerSettings();
@@ -18,22 +18,22 @@ Hooks.once("init", () => {
    * A singleton instance of the WorldAnvil client
    * @type {WorldAnvil}
    */
-  module.anvil = new WorldAnvil();
+  module.anvil = module.anvil ?? new WorldAnvil();
 
   /**
    * A singleton instance of the WorldAnvilBrowser UI for importing content
    * @type {WorldAnvilBrowser}
    */
-  module.browser = new WorldAnvilBrowser();
+  module.browser = module.browser ?? new WorldAnvilBrowser();
 
   /**
    * A singleton instance of the WorldAnvilConfig UI for configuring account integration
    * @type {WorldAnvilConfig}
    */
-  module.config = new WorldAnvilConfig();
+  module.config = module.config ?? new WorldAnvilConfig();
 
   // Register some helper functions
-  module.api = api;
+  module.api = module.api ?? api;
 });
 
 
@@ -57,7 +57,6 @@ Hooks.once("ready", () => {
  */
 Hooks.on("renderJournalDirectory", (app, html, data) => {
   if ( !game.user.isGM ) return;
-  const module2 = game.modules.get("world-anvil");
 
   // Add the World Anvil Button
   const button = $(`<button type="button" id="world-anvil">
@@ -65,10 +64,11 @@ Hooks.on("renderJournalDirectory", (app, html, data) => {
   </button>`);
   button.on("click", ev => {
     const anvil = game.modules.get("world-anvil").anvil;
+    module.browser = module.browser ?? new WorldAnvilBrowser();
     if ( anvil.worldId ) {
-      module2.browser.render(true);
+      module.browser.render(true);
     } else {
-      module2.config.render(true);
+      module.config.render(true);
     }
   });
   html.find(".directory-header .action-buttons").append(button);
