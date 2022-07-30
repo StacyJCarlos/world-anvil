@@ -105,7 +105,7 @@ export default class WorldAnvilBrowser extends Application {
 
       // Check linked entry permissions
       article.entry = entries.find(e => e.getFlag("world-anvil", "articleId") === article.id);
-      article.visibleByPlayers = article.entry?.data.permission.default >= CONST.DOCUMENT_PERMISSION_LEVELS.OBSERVER;
+      article.visibleByPlayers = article.entry?.data.permission.default >= 2;
 
       // Get the category to which the article belongs
       const category = categories.get(article.category?.id) || uncategorized;
