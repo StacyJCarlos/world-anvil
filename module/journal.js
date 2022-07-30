@@ -36,7 +36,7 @@ export default class WorldAnvilBrowser extends Application {
 
   /** @override */
   static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
+    return mergeObject(super.defaultOptions, {
       id: "world-anvil-browser",
       classes: ["world-anvil"],
       template: "modules/world-anvil/templates/journal.hbs",
